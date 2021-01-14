@@ -54,7 +54,7 @@ class CRUD {
      */
     async getSingle(table, id) {
         const { items } = await this.download(table)
-        return items.find(item => item.id == id)
+        return items.find(item => item.id === id)
     }
 
     /**
@@ -81,7 +81,7 @@ class CRUD {
     async put(table, data) {
 
         const { items = [], ...entry } = await this.download(table)
-        const i = items.findIndex(item => item.id == data.id)
+        const i = items.findIndex(item => item.id === data.id)
         items[i] = { ...items[i], ...data }
         await this.upload(table, { ...entry, items })
         return items[i]
@@ -95,7 +95,7 @@ class CRUD {
      */
     async delete(table, id) {
         const { items = [], ...entry } = await this.download(table)
-        const i = items.findIndex(item => item.id == id)
+        const i = items.findIndex(item => item.id === id)
         const [removed] = items.splice(i, 1);
         await this.upload(table, { ...entry, items })
         return removed
