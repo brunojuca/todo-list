@@ -24,8 +24,8 @@ export default function TodoListContainer({ list }) {
         list.getList().then((value) => setListItens(value));
     }, [list]);
 
-    async function postTodo(todo) {
-        await list.postListItem({ text: todo });
+    async function postTodo(todo, img) {
+        await list.postListItem({ text: todo, img: img });
         const updatedList = await list.getList();
         setListItens(updatedList);
     };
